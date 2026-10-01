@@ -56,6 +56,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\start.ps1 -Setup
 
 - [维护指南](docs/MAINTENANCE.md)：界面、三种语言、餐厅资料、检测器分别在哪里修改。
 - [备份恢复与迁移](docs/RESTORE_AND_MIGRATE.md)：换电脑、恢复自动启动、搬到服务器。
+- [搜索收录说明](docs/SEARCH_VISIBILITY.md)：让网站更容易被发现，以及使用 Google Search Console 请求收录。
 - [部署说明](DEPLOYMENT.md)、[检测覆盖](CHECKER_STATUS.md)、[资料来源](DATA_SOURCES.md)。
 - [贡献指南](CONTRIBUTING.md)：报告问题、增加证据、提交 Pull Request。
 

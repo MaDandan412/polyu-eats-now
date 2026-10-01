@@ -2,7 +2,7 @@
 
 **Good food, less guesswork.** A mobile-first food-ordering availability tool for students and staff at **The Hong Kong Polytechnic University (Hong Kong PolyU)**, using evidence from official ordering systems.
 
-[简体中文说明](README.zh-CN.md) · [Maintenance guide](docs/MAINTENANCE.md) · [Restore and migrate](docs/RESTORE_AND_MIGRATE.md)
+[简体中文说明](README.zh-CN.md) · [Maintenance guide](docs/MAINTENANCE.md) · [Restore and migrate](docs/RESTORE_AND_MIGRATE.md) · [Search visibility](docs/SEARCH_VISIBILITY.md)
 
 ## Why I built this / 为什么做这个小工具
 

@@ -50,7 +50,7 @@ export default function App() {
   const controller=useRef<AbortController|null>(null)
   useEffect(()=>{
     document.documentElement.lang=language
-    document.title=language==='zh-Hant'?'PolyU Eats Now · 理大即時點餐':language==='zh-Hans'?'PolyU Eats Now · 理大即时点餐':'PolyU Eats Now · Orderable on campus'
+    document.title=language==='zh-Hant'?'PolyU Eats Now · 香港理工大學即時點餐':language==='zh-Hans'?'PolyU Eats Now · 香港理工大学即时点餐':'PolyU Eats Now · Hong Kong PolyU Food Ordering'
   },[language])
   const refresh=useCallback(async()=>{
     if(demo){setSample(demoRestaurants());return}
