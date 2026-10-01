@@ -1,0 +1,14 @@
+.git
+.venv
+.env
+.env.*
+**/__pycache__
+**/.pytest_cache
+**/*.tsbuildinfo
+frontend/node_modules
+frontend/dist
+backend/tests
+.runtime
+tools/cloudflared.exe
+PHONE_PREVIEW.html
+PHONE_URL.txt

@@ -1,0 +1,319 @@
+{
+  "communal-student": {
+    "platform": "order.place",
+    "adapter": "order_place",
+    "order_url": "https://food.order.place/home/store/764531597991936?mode=prekiosk",
+    "identity": [
+      "APC IK816",
+      "文康樓",
+      "Communal Student Canteen"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/cb-canteen/",
+    "services_source": "official-ordering-page",
+    "services_source_url": "https://food.order.place/home/store/764531597991936?mode=prekiosk",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null,
+    "services_note": "2026-10-01 mobile mode selector shows only 外賣; user correction independently confirmed. Online fulfillment only, not physical seating."
+  },
+  "u-garden-student": {
+    "platform": "order.place",
+    "adapter": "order_place",
+    "order_url": "https://csd.order.place/home/store/112871?mode=prekiosk&onpremise=true",
+    "identity": [
+      "香港理工大學花園",
+      "HK POLY U GARDEN"
+    ],
+    "reported_services": {
+      "dine_in": null,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/u-garden-student-canteen/",
+    "services_source": "user-provided",
+    "services_source_url": null,
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null,
+    "services_note": "Previous supplied dine_in=true did not distinguish physical seating from online fulfillment. Online dine-in is not claimed until its official mode selector can be verified; latest checks encountered explicit closure or browser verification."
+  },
+  "u-garden-staff": {
+    "platform": "order.place",
+    "adapter": "order_place",
+    "order_url": "https://csd.order.place/home/store/212871?mode=takeaway&onpremise=true",
+    "identity": [
+      "香港理工大學花園",
+      "HK POLY U GARDEN"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/u-garden-staff-canteen/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/u-garden-staff-canteen/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "block-y": {
+    "platform": "Tai Tai Foodtopia",
+    "adapter": "tai_tai",
+    "order_url": "https://order.taitaiteaology.com/polyu-order/",
+    "identity": [
+      "PolyU",
+      "理工",
+      "Tai Tai Foodtopia"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/block-y-outlet/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/block-y-outlet/",
+    "online_payment": true,
+    "mobile_only": true,
+    "session_minutes": 15,
+    "payment_source": "Official mobile menu displays a Go to payment control; user reports online checkout. No transaction performed.",
+    "ordering_notes_source_url": "https://order.taitaiteaology.com/polyu-order/",
+    "brand_routes": {
+      "Tai Tai": "https://order.taitaiteaology.com/#/goodslist?query=eyJwYXJlbnQiOiI0Iiwic2hvcCI6IjEwMDMiLCJwYWdlIjoiIiwicGlja01lYWxUeXBlIjoiMiIsInRhYmxlTmFtZSI6IiJ9",
+      "Grove": "https://order.grove.hk/#/goodslist?query=eyJwYXJlbnQiOiI0Iiwic2hvcCI6IjIxMSIsInBhZ2UiOiIiLCJwaWNrTWVhbFR5cGUiOiIyIiwidGFibGVOYW1lIjoiIn0"
+    }
+  },
+  "va-staff": {
+    "platform": "UCR IQPOS",
+    "adapter": "ucr_iqpos",
+    "order_url": "https://ucriqpos.com.hk/m5115/b0002/sov01/modeta?outlet=005&stall=002&type=asap",
+    "identity": [
+      "VA Student & Staff Canteen",
+      "VA Staff Canteen",
+      "理工"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/va-staff-canteen/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/va-staff-canteen/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "va-student": {
+    "platform": "UCR IQPOS",
+    "adapter": "ucr_iqpos",
+    "order_url": "https://ucriqpos.com.hk/m5115/b0002/sov01/zh-hk/menu?v=T8Gc0OZwPIDAVO2Uq0Yzt",
+    "identity": [
+      "VA Student & Staff Canteen",
+      "VA Student Canteen",
+      "理工"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "note": "User-supplied session-style link; expires or missing context must return UNKNOWN.",
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/va-student-canteen/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/va-student-canteen/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "staff-club": {
+    "platform": "SeitoPOS",
+    "adapter": "seito",
+    "order_url": "https://imapp-hk01.seitopos.com:443/PosWMemServ/WMemProcess?t=94213900522",
+    "identity": [
+      "U.Green",
+      "U. Green",
+      "U Green",
+      "Staff Club",
+      "理工"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/staff-club-restaurant/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/staff-club-restaurant/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "theatre-lounge": {
+    "platform": "Eats365",
+    "adapter": "eats365",
+    "order_url": "https://app.eats365pos.com/hk/en/terraceinseaside_hunghom",
+    "check_url": "https://app.eats365pos.com/hk/en/terraceinseaside_hunghom/menu",
+    "identity": [
+      "Terrace in Seaside (Hung Hom)"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/theatre-lounge/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/theatre-lounge/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "gourmet-shop": {
+    "platform": "SeitoPOS",
+    "adapter": "seito",
+    "order_url": "https://imapp-hk01.seitopos.com/PosWMemServ/WMemProcess?t=25200702128",
+    "identity": [
+      "Gourmet Shop",
+      "Hotel ICON",
+      "唯港薈"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/gourmet-shop/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/gourmet-shop/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "h-cafe": {
+    "platform": "ODOUI",
+    "adapter": "odoui",
+    "order_url": "https://odoui1.azurewebsites.net/shop/home",
+    "identity": [
+      "H Café",
+      "H Cafe",
+      "American Diner",
+      "美式"
+    ],
+    "reported_services": {
+      "dine_in": null,
+      "takeaway": true
+    },
+    "note": "Generic home URL: must confirm merchant identity before any status.",
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/h-cafe/",
+    "services_source": "user-provided",
+    "services_source_url": null,
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "v-cafe": {
+    "platform": "Pin2Eat",
+    "adapter": "pin2eat",
+    "order_url": "https://meal.pin2eat.com/v2/package_store/pages/store/home?store_id=5356",
+    "identity": [
+      "Chill Cup",
+      "清花",
+      "V Café",
+      "V Cafe"
+    ],
+    "reported_services": {
+      "dine_in": null,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/v-cafe/",
+    "services_source": "user-provided",
+    "services_source_url": null,
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "w-kiosk": {
+    "platform": "QLUB",
+    "adapter": "qlub",
+    "order_url": "https://app.qlub.io/qr/hk/pizzaexpress-polyu/0/_/_/575354f0cf",
+    "identity": [
+      "PizzaExpress",
+      "Pizza Express"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/w-kiosk/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/w-kiosk/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "hung-hom-halls": {
+    "platform": "FoodCloud",
+    "adapter": "foodcloud",
+    "order_url": "https://orderonline.foodcloud.hk/m5087/b0001/sov01/modeta/?outlet=001&type=asap",
+    "identity": [
+      "Hung Hom",
+      "紅磡",
+      "紅磡灣",
+      "The Forest",
+      "理工"
+    ],
+    "reported_services": {
+      "dine_in": false,
+      "takeaway": true
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/hhsh-canteen/",
+    "services_source": "official-directory",
+    "services_source_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/hhsh-canteen/",
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "va-starbucks": {
+    "platform": "Mobile App",
+    "adapter": null,
+    "order_url": null,
+    "reported_services": {
+      "dine_in": null,
+      "takeaway": null
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/va-cafe/",
+    "services_source": "not-published",
+    "services_source_url": null,
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "x-pacific": {
+    "platform": "Mobile App",
+    "adapter": null,
+    "order_url": null,
+    "reported_services": {
+      "dine_in": null,
+      "takeaway": null
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/x-cafe/",
+    "services_source": "not-published",
+    "services_source_url": null,
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  },
+  "star-pacific": {
+    "platform": "Mobile App",
+    "adapter": null,
+    "order_url": null,
+    "reported_services": {
+      "dine_in": null,
+      "takeaway": null
+    },
+    "info_url": "https://www.polyu.edu.hk/cfso/campus-environment-and-facilities/catering-facilities/catering-outlets/star-cafe/",
+    "services_source": "not-published",
+    "services_source_url": null,
+    "online_payment": null,
+    "mobile_only": false,
+    "session_minutes": null
+  }
+}
