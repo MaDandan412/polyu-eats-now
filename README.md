@@ -49,6 +49,8 @@ Open http://127.0.0.1:8000. Setup installs dependencies and Chromium, builds the
 
 After setup, **Start PolyU Eats Now.cmd** starts the app in the background and creates a phone preview. **Enable Auto Start.cmd** enables startup after signing in to Windows; **Disable Auto Start.cmd** removes it. See the migration guide before moving the folder.
 
+If Order.place requires browser verification, **Open Ordering Verification.cmd** requests an isolated Chrome window on the next check. Complete any official challenge yourself; your everyday browser profile is untouched. Session reuse is best-effort and challenges may return. See the [verification guide](docs/ORDERING_VERIFICATION.md).
+
 ## Run on Linux / macOS
 
 ```sh

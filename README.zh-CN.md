@@ -44,6 +44,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\start.ps1 -Setup
 
 以后双击 **Start PolyU Eats Now.cmd** 可在后台运行。**Enable Auto Start.cmd** 启用登录 Windows 后自动运行；**Disable Auto Start.cmd** 取消。没有自动设置关机后继续服务；电脑必须登录、联网且不休眠。
 
+遇到 Order.place 安全验证时，可以双击 **Open Ordering Verification.cmd**，让后台在下一轮检查打开独立 Chrome 窗口。由你完成官方验证，不读取日常浏览器资料；平台可能再次要求验证。详见 [独立验证指南](docs/ORDERING_VERIFICATION.md)。
+
 ## 手机和服务器
 
 个人电脑可以选用免费的 Tailscale Funnel：自己安装并登录客户端，再运行 **Configure Fixed Phone.cmd**，完成官方的首次公网分享确认。网站会得到类似 `https://polyueatsnow.<你的网络名>.ts.net` 的固定网址，朋友只用浏览器即可。

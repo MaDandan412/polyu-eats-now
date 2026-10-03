@@ -152,7 +152,7 @@
     "platform": "Eats365",
     "adapter": "eats365",
     "order_url": "https://app.eats365pos.com/hk/en/terraceinseaside_hunghom",
-    "check_url": "https://app.eats365pos.com/hk/en/terraceinseaside_hunghom/menu",
+    "check_url": "https://app.eats365pos.com/hk/en/terraceinseaside_hunghom",
     "identity": [
       "Terrace in Seaside (Hung Hom)"
     ],

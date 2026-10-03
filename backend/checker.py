@@ -4,6 +4,7 @@ from urllib.parse import urlsplit
 from .adapters import ADAPTERS
 from .adapters.base import Observation
 from .models import CheckResult, Status
+from .ordering_session import OrderingSession, is_verification
 
 logger = logging.getLogger(__name__)
 ALLOWED_HOSTS = {'food.order.place', 'csd.order.place', 'order.taitaiteaology.com', 'order.grove.hk', 'ucriqpos.com.hk', 'imapp-hk01.seitopos.com', 'app.eats365pos.com', 'odoui1.azurewebsites.net', 'meal.pin2eat.com', 'app.qlub.io', 'orderonline.foodcloud.hk'}
@@ -84,6 +85,24 @@ COLLECT = r'''({menu, product, platform}) => {
       if (/堂食|dine.?in/i.test(label)) services.dine_in = true;
     }
   }
+  if (platform === 'eats365') {
+    const mode = document.querySelector('.order-mode-text');
+    const detail = mode?.parentElement?.querySelector('.detail');
+    current_order_enabled = visible(mode) && mode.innerText.trim() === 'Pickup' &&
+      visible(detail) && detail.innerText.trim() === 'Ready for Pickup Immediately';
+    const dialog = [...document.querySelectorAll('.vm--modal[role="dialog"]')].find(visible);
+    const name = dialog?.querySelector('.nameAndDesc h1')?.innerText?.trim() || '';
+    const add = dialog?.querySelector('.c-add-to-cart-btn');
+    const item = products.find(p => menuNodes.some(m => m.contains(p)) &&
+      p.querySelector('h3')?.innerText?.trim() === name && /\$\s*\d/.test(p.innerText) &&
+      !/sold out|unavailable|售罄|餐具|飲管|cutlery|utensil|straw/i.test(p.innerText));
+    // A menu card or an immediate label alone is insufficient. Inspect an
+    // enabled purchase control in a matching food's detail, without adding it.
+    purchasable = name && item && visible(add) && enabled(add) &&
+      !/(^|[-_\s])disabled($|[-_\s])/i.test(add.className) &&
+      /^Add for\s*\$\s*\d/i.test(add.innerText.trim()) ? [item] : [];
+    if (current_order_enabled && purchasable.length) services.takeaway = true;
+  }
   return {text,title:document.title,menu_count:menuNodes.length,purchasable_count:purchasable.length,services,current_order_enabled};
 }'''
 
@@ -92,18 +111,22 @@ class BrowserChecker:
         self.runtime = None
         self.browser = None
         self.ready = False
+        self.ordering_session = None
 
     async def start(self):
         try:
             from playwright.async_api import async_playwright
             self.runtime = await async_playwright().start()
             self.browser = await self.runtime.chromium.launch(headless=True)
+            self.ordering_session = OrderingSession(self.runtime)
             self.ready = True
         except Exception as exc:
             logger.warning('Browser checker unavailable: %s', type(exc).__name__)
 
     async def stop(self):
         self.ready = False
+        if self.ordering_session:
+            await self.ordering_session.close()
         if self.browser:
             await self.browser.close()
         if self.runtime:
@@ -132,15 +155,38 @@ class BrowserChecker:
         adapter = ADAPTERS.get(source.get('adapter'))
         if not adapter:
             return CheckResult(reason='This platform has no verified web checker yet.')
-        context = await self.browser.new_context(locale='en-HK', timezone_id='Asia/Hong_Kong', viewport={'width':390,'height':844}, screen={'width':390,'height':844}, user_agent=MOBILE_UA, is_mobile=True, has_touch=True, device_scale_factor=3)
+        shared_page = None
+        if source.get('adapter') == 'order_place' and self.ordering_session:
+            try:
+                shared_page = await self.ordering_session.page(url)
+            except Exception as exc:
+                logger.warning('Isolated ordering browser unavailable: %s', type(exc).__name__)
+                await self.ordering_session.close()
+        options = dict(locale='en-HK', timezone_id='Asia/Hong_Kong',
+                       viewport={'width':390,'height':844}, screen={'width':390,'height':844},
+                       is_mobile=True, has_touch=True, device_scale_factor=3)
+        # Eats365 serves different page structures to Safari and Chromium.
+        # Use this Chromium browser's own user agent with the observed adapter.
+        if source.get('adapter') != 'eats365':
+            options['user_agent'] = MOBILE_UA
+        context = shared_page.context if shared_page else await self.browser.new_context(**options)
         try:
             if source.get('adapter') == 'tai_tai':
                 return await self.check_block_y(context, adapter, source)
-            page = await context.new_page()
-            response = await page.goto(url, wait_until='domcontentloaded', timeout=25_000)
-            code = response.status if response else 0
+            page = shared_page or await context.new_page()
+            # Leave a challenge visible for the human to complete; do not refresh
+            # it every cycle or solve it automatically. After verification, fresh
+            # normal navigation supplies new ordering evidence as usual.
+            verifying = (shared_page and self.ordering_session.visible and
+                         is_verification((await self.observe(page, adapter, source))['text']))
+            if verifying:
+                code = 200
+            else:
+                response = await page.goto(url, wait_until='domcontentloaded', timeout=25_000)
+                code = response.status if response else 0
             if code >= 400:
-                return adapter.parse(Observation(text='', http_status=code), source)
+                observed = await self.observe(page, adapter, source)
+                return adapter.parse(Observation(**observed, http_status=code), source)
             if urlsplit(page.url).hostname not in ALLOWED_HOSTS:
                 return CheckResult(reason='Ordering page redirected to an unverified site or a sign-in page.')
             early = await self.observe(page, adapter, source)
@@ -187,7 +233,8 @@ class BrowserChecker:
                         break
             return result
         finally:
-            await context.close()
+            if not shared_page:
+                await context.close()
 
     async def check_block_y(self, context, adapter, source):
         results = []

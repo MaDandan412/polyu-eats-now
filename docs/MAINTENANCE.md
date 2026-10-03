@@ -39,4 +39,8 @@ npm.cmd run build
 
 ## 后续版本方向
 
+Order.place 安全验证可使用独立本机 Chrome 会话，见 [独立验证指南](ORDERING_VERIFICATION.md)。启动入口为 `Open Ordering Verification.cmd`；浏览器资料只留在 `.runtime`，不提交 Git，也不包含在备份中。平台仍可能再次验证。
+
+Eats365 使用 Chromium 自己的浏览器标识进入官方 Pickup 流程，并检查「Ready for Pickup Immediately」与匹配商品详情的可用购买控件。Safari 页面结构不同，不能把一个版本的选择器用于另一个版本。打开商品详情不等于加入购物车，检测不得点击购买按钮。
+
 优先补齐可靠检测、移动端体验与平台失败原因。实时菜单、点餐用语翻译、登录和支付等需要独立设计；当前版本不承诺这些功能。迁移微信小程序可复用 API、基础资料与领域规则，但需要替换浏览器界面／存储，并按小程序要求配置服务域名。

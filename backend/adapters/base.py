@@ -34,10 +34,10 @@ class Adapter:
         lines = {' '.join(line.split()).casefold() for line in text.splitlines() if line.strip()}
         if observation.http_status == 429:
             return CheckResult(reason='Ordering system rate-limited this check. Try again later.')
+        if any(t in low for t in ('verify you are human', 'enable javascript and cookies to continue', 'checking your browser', 'access denied', 'captcha', '正在進行安全驗證', '正在进行安全验证', '正在執行安全驗證', '正在执行安全验证', '確認您不是機器人', '确认您不是机器人')):
+            return CheckResult(reason='Ordering system requires browser verification. Availability is unknown.')
         if observation.http_status >= 400:
             return CheckResult(reason='This platform does not currently allow this automated check to access the ordering page.')
-        if any(t in low for t in ('verify you are human', 'enable javascript and cookies to continue', 'checking your browser', 'access denied', 'captcha', '正在執行安全驗證', '正在执行安全验证', '確認您不是機器人', '确认您不是机器人')):
-            return CheckResult(reason='Ordering system requires browser verification. Availability is unknown.')
         if text.strip() == 'CONTENT_NOT_FOUND':
             return CheckResult(reason='Official ordering page returned CONTENT_NOT_FOUND; current orderability cannot be verified.')
         if not text.strip():
