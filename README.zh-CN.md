@@ -44,6 +44,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\start.ps1 -Setup
 
 以后双击 **Start PolyU Eats Now.cmd** 可在后台运行。**Enable Auto Start.cmd** 启用登录 Windows 后自动运行；**Disable Auto Start.cmd** 取消。没有自动设置关机后继续服务；电脑必须登录、联网且不休眠。
 
+登录启动器会留在后台，每 30 秒检查本机网站；程序意外退出时自动重新启动，保留原手机网址。它不会终止占用端口的其他程序。取消自动启动后，守护在完成当前检查后退出，正在运行的网站保留。断网、关机或休眠仍会影响访问。
+
 遇到 Order.place 安全验证时，可以双击 **Open Ordering Verification.cmd**，让后台在下一轮检查打开独立 Chrome 窗口。由你完成官方验证，不读取日常浏览器资料；平台可能再次要求验证。详见 [独立验证指南](docs/ORDERING_VERIFICATION.md)。
 
 ## 手机和服务器
